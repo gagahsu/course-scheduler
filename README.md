@@ -105,6 +105,10 @@ cd web && npx serve -l 8000     # 或 python3 -m http.server 8000
 
 `web/serve.json` 關掉了 serve 的 clean URLs；不關的話 `class.html?id=5` 會被轉到 `/class`，網址參數會不見。
 
+## 備份與還原
+
+見 [docs/backup-restore.md](docs/backup-restore.md)：用 pg_dump 或 DBeaver 備份 public schema 與登入帳號，還原到新專案後跑 `supabase/restore_grants.sql` 補回權限。備份檔放 `supabase/backup/`（已被 git 排除）。
+
 ## 注意
 
 - Supabase 免費方案的專案 **7 天沒有任何請求會暫停**，到後台按 Restore 就好；每天有人用就不會發生。
