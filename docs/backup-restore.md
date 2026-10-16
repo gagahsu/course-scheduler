@@ -111,8 +111,8 @@ psql $NEW -v ON_ERROR_STOP=1 -f "supabase/backup/auth_data-<時間>.sql"
 ### 4. 收尾
 
 1. Authentication → Sign In / Providers：關掉 *Allow new users to sign up*。
-2. Authentication → URL Configuration：*Site URL* 設成 Render 網址。
-3. Project Settings → API：拿新的 *Project URL*、*anon public* key，更新 `web/js/config.js`，commit 後 Render 會自動重新部署。
+2. Authentication → URL Configuration：*Site URL* 設成 GitHub Pages 網址。
+3. Project Settings → API：拿新的 *Project URL*、*anon public* key，更新 `web/js/config.js`，commit、push 後 GitHub Actions 會自動重新部署。
 4. 打開網站：
    - 未登入：行事曆看得到，但看不到假別、備註、待處理、負荷
    - 登入：各頁資料都在，可以新增／修改

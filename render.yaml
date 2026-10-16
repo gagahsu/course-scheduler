@@ -1,9 +1,0 @@
-services:
-  - type: web
-    name: course-scheduler
-    runtime: static
-    staticPublishPath: web
-    headers:
-      - path: /*
-        name: Cache-Control
-        value: no-cache

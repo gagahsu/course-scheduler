@@ -1,10 +1,10 @@
 # 課務排程
 
 台南／高雄多班的排課、老師請假、代課安排。
-前端是純靜態網頁（部署在 Render），資料、登入、權限都在 Supabase。
+前端是純靜態網頁（部署在 GitHub Pages），資料、登入、權限都在 Supabase。
 
 ```
-瀏覽器 ──► Render 靜態網站（web/）
+瀏覽器 ──► GitHub Pages 靜態網站（web/）
               │  supabase-js（anon key）
               ▼
           Supabase：Postgres + Auth + Row Level Security
@@ -86,18 +86,15 @@ export const SUPABASE_ANON_KEY = 'eyJ...';
 
 anon key 是公開的，可以直接提交到 repo。沒登入的人只讀得到行事曆需要的欄位（班級、老師、授課區段、停課／補課、請假日期、代課老師），讀不到假別、各種備註、白名單，也不能寫入；其他頁面與寫入只有 `staff` 裡的人可以用。
 
-### 3. Render
-
-1. 把整個資料夾推到 GitHub。
-2. Render → **New → Blueprint** → 選這個 repo，會讀 `render.yaml` 建立靜態網站。
-   （或 **New → Static Site**，Publish directory 填 `web`，Build command 留空。）
-3. 部署完成後打開網址，用剛建的帳號登入。
-4. 回 Supabase **Authentication → URL Configuration**，把 *Site URL* 設成 Render 網址（之後要做「忘記密碼」才用得到）。
-
-### 3'. 或 GitHub Pages
+### 3. GitHub Pages
 
 `.github/workflows/pages.yml` 會在 push 到 `main`（`web/` 有變動）時把 `web/` 發佈到 https://gagahsu.github.io/course-scheduler/ ，也可以到 Actions 頁面手動執行。
-Repo 的 Settings → Pages → Source 要選 **GitHub Actions**。Pages 會快取約 10 分鐘，改版後偶爾要強制重新整理。
+
+1. Repo 的 **Settings → Pages → Source** 選 **GitHub Actions**（或 `gh api -X POST repos/<owner>/<repo>/pages -f build_type=workflow`）。
+2. push 到 `main`，等 Actions 跑完後打開網址，用剛建的帳號登入。
+3. 回 Supabase **Authentication → URL Configuration**，把 *Site URL* 設成 Pages 網址（之後要做「忘記密碼」才用得到）。
+
+Pages 會快取約 10 分鐘，改版後偶爾要強制重新整理。
 
 ### 本機預覽
 
