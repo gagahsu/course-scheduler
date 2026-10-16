@@ -94,6 +94,11 @@ anon key 是公開的，可以直接提交到 repo。沒登入的人只讀得到
 3. 部署完成後打開網址，用剛建的帳號登入。
 4. 回 Supabase **Authentication → URL Configuration**，把 *Site URL* 設成 Render 網址（之後要做「忘記密碼」才用得到）。
 
+### 3'. 或 GitHub Pages
+
+`.github/workflows/pages.yml` 會在 push 到 `main`（`web/` 有變動）時把 `web/` 發佈到 https://gagahsu.github.io/course-scheduler/ ，也可以到 Actions 頁面手動執行。
+Repo 的 Settings → Pages → Source 要選 **GitHub Actions**。Pages 會快取約 10 分鐘，改版後偶爾要強制重新整理。
+
 ### 本機預覽
 
 不需要 build，任何靜態伺服器都可以：
