@@ -1,0 +1,19 @@
+# 資料庫備份：含老師資料、email、密碼雜湊，不可 commit
+supabase/backup/
+*.dump
+
+# Supabase CLI 本機檔案
+supabase/.temp/
+supabase/.branches/
+.env
+.env.*
+
+# Node／工具
+node_modules/
+
+# 系統與編輯器
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
